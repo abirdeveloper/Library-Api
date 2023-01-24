@@ -1,12 +1,12 @@
-const bookAdaptor = require('./lib/books-adaptor')
+const bookAdaptor = require('./lib/policy-adaptor')
 
 const getAll = () => {
     const books = bookAdaptor.getAll();
     return books
 }
 
-const getOne = (code) => {
-    const book = bookAdaptor.getOne(code);
+const getOne = (_id) => {
+    const book = bookAdaptor.getOne(_id);
     return book
 }
 
@@ -25,5 +25,9 @@ const deleteBookByCode = (code)=>{
     return bookAdaptor.deleteNewBook(code)
 }
 
+const searchBookname = async(policynumber)=>{
+    return await bookAdaptor.searchNewBook(policynumber)
+}
 
-module.exports = {getAll, getOne, addNewBook,deleteBookByCode,updateNewBook}
+
+module.exports = {getAll, getOne, addNewBook,deleteBookByCode,updateNewBook,searchBookname}
